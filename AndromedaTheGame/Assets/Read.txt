@@ -1,0 +1,15 @@
+JUEGO PERSONAL: 
+*)Sea divertido.
+*)Juego pensado hasta el momento:
+-avion espacial de guerra.
+Andromeda. 
+*)estaria situado en el espacio.
+*)enemigos, como naves espaciales y momentos de asteroides. 
+*)movimiento mediante touch (UI), izquierda derecha, boton de disparo.
+*)sacar los assets en los assets store free. 
+*) juego gratuito, estilo de juego mediante vidas, seria 10enegia.
+*)estilo de carga de energia, ver video de publicidad.
+*)Compra en linea(Invertir en los assets stores de 5$)
+--------------------------------------------------------------
+Limitar Movimiento de jugador, 
+movimiento del jugador debe ser dezlitante 
