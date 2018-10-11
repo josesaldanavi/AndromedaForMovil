@@ -17,7 +17,7 @@ public class RamdonRotation : MonoBehaviour {
         //afecta solo la rotacion del objeto
         //Vector3 angularVelocity = new Vector3(Random.Range(-1,1), Random.Range(-1, 1), Random.Range(-1, 1)).normalized;
         //Ramdon.insideUnitSpher es lo mismo que la linea anterior
-        rgdb.angularVelocity = Random.insideUnitSphere * rotationVelocity;
+        rgdb.angularVelocity =  Random.insideUnitCircle * rotationVelocity;
 	}
 	
 	// Update is called once per frame
