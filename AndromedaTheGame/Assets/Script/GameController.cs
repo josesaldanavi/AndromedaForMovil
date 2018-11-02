@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
+
+    public Text puntos;
     public GameObject hazard;
     public Vector3 spawnValues;
     public int indexHazard;
+    private int score;
     public float spawnWait;
     public float startSpawn;
     public float waveWait;
@@ -13,12 +17,14 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //se ejecutara cuando se activa el juego
+        score = 0;
+        UpdateScore();
         StartCoroutine(SpawnHazard());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
     IEnumerator SpawnHazard()
@@ -37,6 +43,17 @@ public class GameController : MonoBehaviour {
         }
 
         
+    }
+
+    public void AddScore(int value)
+    {
+        score += value;
+        UpdateScore();
+    }
+
+    void UpdateScore()
+    {
+        puntos.text = "Puntuación: " + score;
     }
 
   
