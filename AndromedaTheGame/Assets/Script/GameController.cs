@@ -1,32 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
+    [Header("Canvas_Life")]
+    public Canvas canvas_life;
+    public Text life_text;
+    public Animator heard_anim;
+    
+    [Header("CanvasController")]
+    public Canvas over_Canvas;
+    public Animator canvas_over;
     public Text puntos;
+    public GameObject restar_GameObject;
     public GameObject hazard;
     public Vector3 spawnValues;
     public int indexHazard;
     private int score;
+    private int indice;
     public float spawnWait;
     public float startSpawn;
     public float waveWait;
+    public bool gameOver = false;
+    public static bool restart =false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         //se ejecutara cuando se activa el juego
+        over_Canvas.enabled = false;
+        restar_GameObject.gameObject.SetActive(false);
         score = 0;
         UpdateScore();
         StartCoroutine(SpawnHazard());
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-
+        GameOver();
+        if (restart==true && Input.GetKeyDown(KeyCode.R))
+        {
+            canvas_over.SetBool("gameOver", false);
+            Restar();
+        }
 	}
-
+    public void Restar()
+    {
+        SceneManager.LoadScene(0);
+    }
     IEnumerator SpawnHazard()
     {
         yield return new WaitForSeconds(startSpawn);
@@ -40,11 +64,28 @@ public class GameController : MonoBehaviour {
             }
             //detener la ejecucion de la corrutina
             yield return new WaitForSeconds(waveWait);
+            if (gameOver == true)
+            {
+                restar_GameObject.gameObject.SetActive(true);
+                indice = 1;
+                restart = true;
+                break;
+
+            }
+
+        }
+    }
+    public void GameOver()
+    {
+        if (DestroyByTrigger.dead == true)
+        {
+            gameOver = true;
+            over_Canvas.enabled = true;
+            canvas_over.SetBool("gameOver", true);
+            canvas_over.SetInteger("Reinicio", indice);
         }
 
-        
     }
-
     public void AddScore(int value)
     {
         score += value;
@@ -56,5 +97,9 @@ public class GameController : MonoBehaviour {
         puntos.text = "Puntuación: " + score;
     }
 
+    void LifeScore()
+    {
+        life_text.text = PlayerController.vida + "%"; 
+    }
   
 }

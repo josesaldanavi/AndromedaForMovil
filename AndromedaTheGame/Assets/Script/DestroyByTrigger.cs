@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DestroyByTrigger : MonoBehaviour {
 
-    
+    public static bool dead = false;
     public GameObject explosion;
     public GameObject explosionPlayer;
     private GameController refScore;
@@ -19,12 +20,14 @@ public class DestroyByTrigger : MonoBehaviour {
     }
 
     void Start () {
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (GameController.restart == true)
+        {
+            dead = false;
+        }
 	}
 
     public void OnTriggerEnter(Collider other)
@@ -34,7 +37,12 @@ public class DestroyByTrigger : MonoBehaviour {
         Instantiate(explosion, transform.position, transform.rotation);
         if (other.CompareTag("Player"))
         {
-            Instantiate(explosionPlayer, other.transform.position, other.transform.rotation);
+            PlayerController.vida -= 5;
+            if (PlayerController.vida == 0)
+            {
+                Instantiate(explosionPlayer, other.transform.position, other.transform.rotation);
+                dead = true;
+            }
         }
         refScore.AddScore(scoreValues);
         Destroy(other.gameObject);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 [System.Serializable]
 public class Limit
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     public Limit limite;
     private Rigidbody rgbd;
 
+    [Header("Vida Player")]
+    public static int vida;
     [Header ("Disparo")]
     public GameObject Bala;
     public Transform BalaSpawn;
@@ -35,7 +38,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1") && Time.time> nextFire)
+        if (CrossPlatformInputManager.GetButton("Fire1") && Time.time> nextFire)
         {
             nextFire = Time.time + fireRate;
             Instantiate(Bala, BalaSpawn.position, Quaternion.identity);
@@ -44,8 +47,9 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        //CrossPlatformInputManager//CROSS_PLATFORM_IMPUT;MOBILE_INPUT
+        float moveHorizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+        float moveVertical = CrossPlatformInputManager.GetAxis("Vertical");
 
         Vector3 Movement = new Vector3(moveHorizontal, 0f, moveVertical);
         rgbd.velocity = Movement * speed;
@@ -54,5 +58,10 @@ public class PlayerController : MonoBehaviour
             Mathf.Clamp(rgbd.position.z, limite.zMin, limite.zMax));
 
         rgbd.rotation = Quaternion.Euler(0f, 0f, rgbd.velocity.x * -4.5f);
+    }
+
+    public void Life()
+    {
+        
     }
 }
