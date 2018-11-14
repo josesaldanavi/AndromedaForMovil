@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Limit
+  - Player2
   layers:
   - Default
   - TransparentFX

@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
     [Header ("Movimiento")]
     public float speed = 2f;
     public Limit limite;
-    private Rigidbody rgbd;
+    public Rigidbody rgbd;
 
     [Header("Vida Player")]
-    public static int vida;
+    public  int vida;
     [Header ("Disparo")]
     public GameObject Bala;
     public Transform BalaSpawn;
@@ -26,10 +26,10 @@ public class PlayerController : MonoBehaviour
     private float nextFire;
     // Use this for initialization
 
-    private void Awake()
+    /*private void Awake()
     {
         rgbd = GetComponent<Rigidbody>();
-    }
+    }*/
     void Start()
     {
 
@@ -60,8 +60,5 @@ public class PlayerController : MonoBehaviour
         rgbd.rotation = Quaternion.Euler(0f, 0f, rgbd.velocity.x * -4.5f);
     }
 
-    public void Life()
-    {
-        
-    }
+
 }

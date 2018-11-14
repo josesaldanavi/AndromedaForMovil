@@ -9,18 +9,20 @@ public class DestroyByTrigger : MonoBehaviour {
     public GameObject explosion;
     public GameObject explosionPlayer;
     private GameController refScore;
+    private PlayerController vidaREf;
     public int scoreValues;
     // Use this for initialization
-
+    
     private void Awake()
     {
-
+        
         //Referencia mediante tag
+        vidaREf = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         refScore = GameObject.FindWithTag("GameController").GetComponent<GameController>();
     }
 
     void Start () {
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -32,21 +34,22 @@ public class DestroyByTrigger : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-
+        
         if (other.CompareTag("Limit")) return;
         Instantiate(explosion, transform.position, transform.rotation);
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player2"))
         {
-            PlayerController.vida -= 5;
-            if (PlayerController.vida == 0)
+            vidaREf.vida -= 5;
+            if (vidaREf.vida <= 0)
             {
+                Destroy(other.gameObject);
                 Instantiate(explosionPlayer, other.transform.position, other.transform.rotation);
                 dead = true;
             }
         }
-        refScore.AddScore(scoreValues);
-        Destroy(other.gameObject);
         Destroy(gameObject);
+        refScore.AddScore(scoreValues);
+       
         
     }
 }

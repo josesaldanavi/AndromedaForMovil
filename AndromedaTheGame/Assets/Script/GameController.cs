@@ -10,7 +10,8 @@ public class GameController : MonoBehaviour {
     public Canvas canvas_life;
     public Text life_text;
     public Animator heard_anim;
-    
+    private PlayerController vidaREf;
+
     [Header("CanvasController")]
     public Canvas over_Canvas;
     public Animator canvas_over;
@@ -28,6 +29,10 @@ public class GameController : MonoBehaviour {
     public static bool restart =false;
 
     // Use this for initialization
+    private void Awake()
+    {
+        vidaREf = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
     void Start () {
         //se ejecutara cuando se activa el juego
         over_Canvas.enabled = false;
@@ -40,16 +45,25 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        LifeScore();
         GameOver();
-        if (restart==true && Input.GetKeyDown(KeyCode.R))
+        if (vidaREf.vida <= 25)
+        {
+            heard_anim.SetBool("latiendo",false);
+        }
+        if (restart == true && Input.GetKeyDown(KeyCode.R))
         {
             canvas_over.SetBool("gameOver", false);
+            indice = 0;
             Restar();
         }
 	}
     public void Restar()
     {
         SceneManager.LoadScene(0);
+        canvas_over.SetBool("gameOver", false);
+        heard_anim.SetBool("latiendo", true);
+        indice = 0;
     }
     IEnumerator SpawnHazard()
     {
@@ -92,14 +106,15 @@ public class GameController : MonoBehaviour {
         UpdateScore();
     }
 
-    void UpdateScore()
+    public void UpdateScore()
     {
         puntos.text = "Puntuación: " + score;
     }
 
-    void LifeScore()
+    public void LifeScore()
     {
-        life_text.text = PlayerController.vida + "%"; 
+        life_text.text = vidaREf.vida + "%";
+
     }
   
 }
