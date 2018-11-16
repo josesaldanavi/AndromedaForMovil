@@ -1133,10 +1133,10 @@ RectTransform:
   m_Father: {fileID: 1288610111}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.02875, y: 0.6152667}
-  m_AnchorMax: {x: 0.27, y: 0.9384376}
+  m_AnchorMin: {x: 0.02875, y: 0.6236667}
+  m_AnchorMax: {x: 0.20563282, y: 0.9384376}
   m_AnchoredPosition: {x: -4, y: 0}
-  m_SizeDelta: {x: 2.199997, y: -9.599998}
+  m_SizeDelta: {x: 2.7999992, y: -9.400002}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1261151539
 MonoBehaviour:
@@ -1237,7 +1237,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 1280}
+  m_ReferenceResolution: {x: 1024, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 1280}
+  m_ReferenceResolution: {x: 1024, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1498,10 +1498,10 @@ RectTransform:
   m_Father: {fileID: 1685232644}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.33375004, y: 0.32228124}
-  m_AnchorMax: {x: 0.70500004, y: 0.44912502}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
-  m_SizeDelta: {x: -229.7, y: -19.5}
+  m_AnchorMin: {x: 0.47243753, y: 0.35233334}
+  m_AnchorMax: {x: 0.5385078, y: 0.469125}
+  m_AnchoredPosition: {x: -5.604, y: 4}
+  m_SizeDelta: {x: -3.199997, y: -13.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1640579890
 MonoBehaviour:
@@ -1655,7 +1655,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 1280}
+  m_ReferenceResolution: {x: 1024, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2065,7 +2065,7 @@ MonoBehaviour:
     zMin: -2
     zMax: 5
   rgbd: {fileID: 1957638504}
-  vida: 100
+  vida: 5
   Bala: {fileID: 1518013211662412, guid: 1463e2ae4ea52174084879eb4d3f7aa1, type: 2}
   BalaSpawn: {fileID: 418032279}
   fireRate: 0.25
