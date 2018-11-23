@@ -502,10 +502,10 @@ MonoBehaviour:
   restar_GameObject: {fileID: 1640579888}
   hazard: {fileID: 1426170231579892, guid: 1cbe7539ab61c584f927835d888d9407, type: 2}
   spawnValues: {x: 5.5, y: 0, z: 20}
-  indexHazard: 5
-  spawnWait: 1
-  startSpawn: 3
-  waveWait: 4
+  indexHazard: 8
+  spawnWait: 0.37
+  startSpawn: 7
+  waveWait: 2
   gameOver: 0
 --- !u!4 &643658808
 Transform:
